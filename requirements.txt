@@ -1,0 +1,17 @@
+# utilities
+numpy
+pandas
+# face recognition models
+scikit-learn
+dlib-bin
+git+https://github.com/ageitgey/face_recognition_models
+setuptools<70.0.0
+# gives database 1-2gb in which we can store data
+supabase
+# helps in hashing in case database gets leak passwords are hashed
+bcrypt
+# qr code generation    
+segno
+# image preproceesing(transform,rotate...)
+pillow
+streamlit
