@@ -104,7 +104,7 @@ def base_layout():
 
 
 
-                }
+                
 
         </style>
                 

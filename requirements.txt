@@ -1,4 +1,4 @@
-# utilities
+streamlit
 numpy
 pandas
 # face recognition models
@@ -15,3 +15,12 @@ segno
 # image preproceesing(transform,rotate...)
 pillow
 streamlit
+
+# voice editing, noise removing and different works
+librosa
+
+#makes embedding such that it can tell that the voice of student matches or not
+resemblyzer
+
+
+
