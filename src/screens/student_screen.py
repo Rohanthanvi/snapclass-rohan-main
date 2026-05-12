@@ -46,6 +46,7 @@ def student_dashboard():
     with st.spinner('Loading your enrolled subjects...'):
         subjects = get_student_subjects(student_id)
         logs = get_student_attendance(student_id)
+        # st.write(logs[0] if logs else "no logs")
   
     stats_map = {}
     for log in logs:
@@ -55,20 +56,22 @@ def student_dashboard():
             stats_map[sid] = {"total": 0, "attended": 0}
 
         stats_map[sid]['total'] += 1
+        if log.get('is_present'):
+            stats_map[sid]['attended'] += 1
         import pandas as pd
 
     table_data = []
 
     for log in logs:
         table_data.append({
-            "Date": log.get("date"),
+            "Date": pd.to_datetime(log.get("timestamp")).strftime("%Y-%m-%d %I:%M %p"),
             "Status": "✅ Present" if log.get("is_present") else "❌ Absent"
         })
 
     df = pd.DataFrame(table_data)
 
     st.dataframe(df, use_container_width=True)
-    stats_map[sid]['attended'] += 1
+    # stats_map[sid]['attended'] += 1
 
 
     cols = st.columns(2)
