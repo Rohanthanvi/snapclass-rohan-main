@@ -55,8 +55,20 @@ def student_dashboard():
             stats_map[sid] = {"total": 0, "attended": 0}
 
         stats_map[sid]['total'] += 1
-        if logs.get('is_present'):
-            stats_map[sid]['attended'] += 1
+        import pandas as pd
+
+    table_data = []
+
+    for log in logs:
+        table_data.append({
+            "Date": log.get("date"),
+            "Status": "✅ Present" if log.get("is_present") else "❌ Absent"
+        })
+
+    df = pd.DataFrame(table_data)
+
+    st.dataframe(df, use_container_width=True)
+    stats_map[sid]['attended'] += 1
 
 
     cols = st.columns(2)
@@ -141,7 +153,7 @@ def student_screen():
                       st.session_state.student_data=student
                       st.toast(f'welcome back{student['name']}')
                       time.sleep(1)
-                      st.rerun
+                      st.rerun()
 
               else:
                    st.info('face not recognised')
