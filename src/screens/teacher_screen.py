@@ -119,6 +119,10 @@ def teacher_tab_take_attendance():
             
             add_photos_dialog()
 
+        if selected_subject_label not in subject_options:
+            st.error("Invalid subject selected.")
+            return    
+
 
     selected_subject_id = subject_options[selected_subject_label]
 
